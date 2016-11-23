@@ -40,7 +40,7 @@
                 tools:listitem="@layout/resource_item"
                 android:visibility="gone"
                 android:layout_width="match_parent"
-                android:background="#EEE"
+                android:background="#DEDEDE"
                 android:layout_height="match_parent" />
 
             <LinearLayout

@@ -121,26 +121,30 @@ public class MainActivity extends AppCompatActivity {
                 JSONArray resources = new JSONArray(message);
                 if(mAdapter.getItemCount() < resources.length()) {
                     mAdapter.setList(resources);
-                    mAdapter.notifyDataSetChanged();
 
                     new android.os.Handler().postDelayed(
                             new Runnable() {
                                 public void run() {
                                     Log.d(TAG, "checking for more resources");
-                                    webView.loadUrl("javascript:alert(JSON.stringify(performance.getEntriesByType('resource')))");
+                                    webView.loadUrl("javascript:alert(JSON.stringify(performance.getEntriesByType('resource').sort(function(a,b){return a.initiatorType.localeCompare(b.initiatorType);})))");
                                 }
                             },
-                            5000);
+                            3000);
                 }
                 else {
+                    mAdapter.setList(resources);
+                    mAdapter.notifyDataSetChanged();
+
+                    mProgressBar.setVisibility(View.GONE);
+                    mResources.setVisibility(View.VISIBLE);
+
                     Log.d(TAG, "resource count is the same. stopping tests.");
                 }
                 Log.d(TAG, "resource count: " + resources.length());
             } catch(Exception e) {
                 Log.w(TAG, e);
             }
-            mProgressBar.setVisibility(View.GONE);
-            mResources.setVisibility(View.VISIBLE);
+
             result.confirm();
             return true;
         }

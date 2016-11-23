@@ -54,6 +54,11 @@ public class ResourceListAdapter extends RecyclerView.Adapter<ResourceListAdapte
     public void onBindViewHolder(ResourceListAdapter.ViewHolder holder, int position) {
         if (position < this.mResourceList.length()) {
             try {
+                String lastType = (position > 0 ? this.mResourceList.getJSONObject(position-1).getString("initiatorType") : "unkown");
+                String currentType = this.mResourceList.getJSONObject(position).getString("initiatorType");
+                //initiatorType
+                holder.viewCategory.setVisibility(lastType.equals(currentType) ? View.GONE : View.VISIBLE);
+                holder.textCategory.setText(currentType);
                 holder.textName.setText(this.mResourceList.getJSONObject(position).getString("name"));
             } catch (JSONException e) {
                 Log.w(TAG, e.toString());
@@ -72,11 +77,15 @@ public class ResourceListAdapter extends RecyclerView.Adapter<ResourceListAdapte
         public View view;
 
         TextView textName;
+        TextView textCategory;
+        View viewCategory;
 
         public ViewHolder(View itemView, int viewType) {
             super(itemView);
 
             textName = (TextView) itemView.findViewById(R.id.resource_name);
+            textCategory = (TextView) itemView.findViewById(R.id.resource_category);
+            viewCategory = itemView.findViewById(R.id.category);
         }
     }
 }
