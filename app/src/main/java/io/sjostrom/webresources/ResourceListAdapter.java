@@ -42,6 +42,15 @@ public class ResourceListAdapter extends RecyclerView.Adapter<ResourceListAdapte
         this.notifyDataSetChanged();
     }
 
+    public String getItem(int position) {
+        String result = "";
+        try {
+            result = this.mResourceList.getJSONObject(position).toString();
+        } catch(Exception e) {}
+
+        return result;
+    }
+
     @Override
     public ResourceListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.resource_item, parent, false); //Inflating the layout
@@ -63,7 +72,7 @@ public class ResourceListAdapter extends RecyclerView.Adapter<ResourceListAdapte
                 holder.viewCategory.setVisibility(lastType.equals(currentType) ? View.GONE : View.VISIBLE);
                 holder.textCategory.setText(currentType);
                 holder.textName.setText(jsonResource.getString("name"));
-                holder.textDuration.setText(Math.floor(jsonResource.getDouble("duration")) + "ms");
+                holder.textDuration.setText(jsonResource.getInt("duration") + " ms");
             } catch (JSONException e) {
                 Log.w(TAG, e.toString());
             }

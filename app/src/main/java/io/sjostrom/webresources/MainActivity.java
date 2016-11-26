@@ -1,5 +1,6 @@
 package io.sjostrom.webresources;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.webkit.JsResult;
@@ -58,6 +60,18 @@ public class MainActivity extends AppCompatActivity {
         mResources.setAdapter(mAdapter);
         mLayoutManager = new LinearLayoutManager(this);
         mResources.setLayoutManager(mLayoutManager);
+        mResources.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        String resource = mAdapter.getItem(position);
+                        if(!resource.isEmpty()) {
+                            FragmentManager fm = getSupportFragmentManager();
+                            ResourceDetailDialog detailDlg = ResourceDetailDialog.newInstance(resource);
+                            detailDlg.show(fm, "fragment_resource_detail_dialog");
+                        }
+                    }
+                })
+        );
 
         // Setup WebView
         WebSettings webSettings = webView.getSettings();
@@ -134,7 +148,6 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onPageFinished(WebView view, String url) {
-            setLoadingDialogText("Success!\nGathering resources...");
             webView.loadUrl("javascript:alert(JSON.stringify(performance.getEntriesByType('resource')))");
         }
 

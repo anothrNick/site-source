@@ -1,0 +1,61 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="io.sjostrom.webresources.ResourceDetailDialog">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:paddingTop="@dimen/text_content_margin"
+            android:paddingStart="@dimen/text_content_margin"
+            android:paddingEnd="@dimen/text_content_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_access_time"
+                android:layout_marginEnd="5dp"
+                android:tint="#888"/>
+
+            <TextView
+                android:id="@+id/resource_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="200ms"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:textSize="14dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="@dimen/text_content_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_cloud_queue"
+                android:layout_marginEnd="5dp"
+                android:tint="#888"/>
+
+            <TextView
+                android:id="@+id/resource_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="http:resource.tld/whatever"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:textSize="14dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</FrameLayout>
