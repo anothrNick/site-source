@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by Nick on 11/22/2016.
@@ -55,11 +56,14 @@ public class ResourceListAdapter extends RecyclerView.Adapter<ResourceListAdapte
         if (position < this.mResourceList.length()) {
             try {
                 String lastType = (position > 0 ? this.mResourceList.getJSONObject(position-1).getString("initiatorType") : "unkown");
-                String currentType = this.mResourceList.getJSONObject(position).getString("initiatorType");
+
+                JSONObject jsonResource = this.mResourceList.getJSONObject(position);
+                String currentType = jsonResource.getString("initiatorType");
                 //initiatorType
                 holder.viewCategory.setVisibility(lastType.equals(currentType) ? View.GONE : View.VISIBLE);
                 holder.textCategory.setText(currentType);
-                holder.textName.setText(this.mResourceList.getJSONObject(position).getString("name"));
+                holder.textName.setText(jsonResource.getString("name"));
+                holder.textDuration.setText(Math.floor(jsonResource.getDouble("duration")) + "ms");
             } catch (JSONException e) {
                 Log.w(TAG, e.toString());
             }
@@ -78,6 +82,7 @@ public class ResourceListAdapter extends RecyclerView.Adapter<ResourceListAdapte
 
         TextView textName;
         TextView textCategory;
+        TextView textDuration;
         View viewCategory;
 
         public ViewHolder(View itemView, int viewType) {
@@ -85,6 +90,7 @@ public class ResourceListAdapter extends RecyclerView.Adapter<ResourceListAdapte
 
             textName = (TextView) itemView.findViewById(R.id.resource_name);
             textCategory = (TextView) itemView.findViewById(R.id.resource_category);
+            textDuration = (TextView) itemView.findViewById(R.id.resource_duration);
             viewCategory = itemView.findViewById(R.id.category);
         }
     }
