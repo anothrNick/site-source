@@ -6,6 +6,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#DEDEDE"
     tools:context="io.sjostrom.webresources.MainActivity">
 
     <FrameLayout
@@ -34,36 +35,69 @@
 
             </android.support.design.widget.AppBarLayout>
 
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/resource_results"
-                tools:listitem="@layout/resource_item"
-                android:visibility="gone"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:background="#DEDEDE"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent">
+                <WebView
+                    android:id="@+id/webview"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
-            <LinearLayout
-                android:id="@+id/headerProgress"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:gravity="center"
-                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#DEDEDE"
+                    android:orientation="vertical"
+                    android:layout_marginTop="-48dp"
+                    android:gravity="center_vertical">
 
-                <ProgressBar
-                    style="@android:style/Widget.Material.ProgressBar.Large"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/progressBar"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_cloud"/>
+                        <ImageView
+                            android:layout_marginTop="32dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_linear_scale"/>
+                    </RelativeLayout>
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/init_message"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:background="@color/transparent"
+                        android:textColor="#A4A4A4"
+                        android:textSize="30dp"
+                        android:text="enter a website URL"/>
+                </LinearLayout>
 
-            <WebView
-                android:id="@+id/webview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/resource_results"
+                    android:background="#DEDEDE"
+                    android:visibility="gone"
+                    tools:listitem="@layout/resource_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/resource_weirdness"
+                    android:visibility="gone"
+                    android:layout_marginTop="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:background="#DEDEDE"
+                    android:textSize="20dp"
+                    android:text="No Resources"/>
+
+            </RelativeLayout>
 
         </LinearLayout>
 

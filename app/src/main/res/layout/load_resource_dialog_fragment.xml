@@ -1,0 +1,33 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:tag="set_import_export_fragment_tag"
+    android:id="@+id/rootView">
+
+    <LinearLayout
+        android:padding="@dimen/text_content_margin"
+        android:id="@+id/headerProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ProgressBar
+            style="@android:style/Widget.Material.ProgressBar.Small"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/progressBar"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="false" />
+
+        <TextView
+            android:id="@+id/loadingText"
+            android:layout_marginStart="@dimen/text_content_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="16dp"
+            android:text="Requesting ..."/>
+
+    </LinearLayout>
+</FrameLayout>
