@@ -1,4 +1,4 @@
-package io.sjostrom.webresources;
+package io.sjostrom.sitesource;
 
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -6,8 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 
 public class LoadResourceDialog extends DialogFragment {

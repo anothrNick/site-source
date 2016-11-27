@@ -1,4 +1,4 @@
-package io.sjostrom.webresources;
+package io.sjostrom.sitesource;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

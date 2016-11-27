@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 24
@@ -30,6 +31,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:24.2.1'
     compile 'com.android.support:cardview-v7:24.2.1'
     compile 'com.github.arimorty:floatingsearchview:2.0.3'
-    compile 'com.jakewharton:butterknife:8.4.0'
     testCompile 'junit:junit:4.12'
 }

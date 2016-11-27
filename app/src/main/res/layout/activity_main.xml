@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#DEDEDE"
-    tools:context="io.sjostrom.webresources.MainActivity">
+    tools:context="io.sjostrom.sitesource.MainActivity">
 
     <FrameLayout
         android:layout_width="match_parent"

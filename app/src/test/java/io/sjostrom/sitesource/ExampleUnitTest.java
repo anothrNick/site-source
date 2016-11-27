@@ -1,4 +1,4 @@
-package io.sjostrom.webresources;
+package io.sjostrom.sitesource;
 
 import org.junit.Test;
 
